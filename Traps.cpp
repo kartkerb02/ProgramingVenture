@@ -13,15 +13,14 @@ int main(){
     int t;
     cin >> t;
     while(t > 0){
-        int n, k, sum = 0;
+        int n, k, sum = 0, temp;
         cin >> n >> k;
 
-        int A[n+1] = {};
         int save[n+1] = {};
         for(int i = 1; i <= n; i++){
-            cin >> A[i];
-            sum += A[i];
-            save[i] = A[i] - n + i; 
+            cin >> temp;
+            sum += temp;
+            save[i] = temp - n + i; 
         }
         sort(save + 1, save + n + 1, greater<int>());
         // for(int i = 1; i <= n; i++){

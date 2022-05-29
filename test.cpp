@@ -32,6 +32,6 @@ int main()
             cout  << i << " ";
         }
     }
-    cout << "\n";
+    cout << "haha";
     return 0;
 }
