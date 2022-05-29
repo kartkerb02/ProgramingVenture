@@ -1,2 +1,2 @@
 # Programming
- My programming venture diaries
+ Collection of my pragramming ventures!
