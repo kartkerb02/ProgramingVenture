@@ -10,27 +10,30 @@ int main(){
     while(t){
         int n, k;
         cin >> n >> k;
-        int remfreq[k] = {};
+        long long int remfreq[k] = {};
 
-        int temp, sum = 0;
+        long long temp, sum = 0;
         for(int i = 0; i < n; i++){
             cin >> temp;
             sum += temp/k;
             remfreq[temp%k]++;
         }
 
-        int i = 1, j = k-1;
+
+        long long int i = 1, j = k-1;
         while(j > i && i + j >= k){
-            int remove = min(remfreq[i], remfreq[j]);
+            long long int remove = min(remfreq[i], remfreq[j]);
             sum += remove;
             remfreq[i] -= remove;
             remfreq[j] -= remove;
-            if(remfreq[i] <= 0){
-                i++;
-            }
-            if(remfreq[j] <= 0){
+
+            if(remfreq[j] == 0){
                 j--;
             }
+            if(remfreq[i] == 0 || j+i < k){
+                i++;
+            }
+            //cout << i << '$' << j << '*' << sum << "*";
         }
         if(j == i && i + j >= k){
             sum += remfreq[i]/2;
