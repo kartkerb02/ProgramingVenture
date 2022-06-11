@@ -1,3 +1,4 @@
-for(auto x : link[root->data]){
-            link[x->data].erase(find(link[x->data].begin(),link[x->data].end(),root->data));
+for(int i = 1; i <= n; i++){
+            cout << groups[i].size() << " ";
         }
+        cout << "\n";
