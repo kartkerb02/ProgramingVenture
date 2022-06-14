@@ -6,12 +6,13 @@ int main(){
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
 
-    int t;
-    cin >> t;   
-    while(t){
-        ll k = 1000;
-        cout << k;
-        t--;
-    }
+    
+        int x = 12;
+        for(int i = 0; i < 20; i++){
+            x+=x&-x;
+            cout << x << "\n";
+        }
+        
+    
     return 0;
 }

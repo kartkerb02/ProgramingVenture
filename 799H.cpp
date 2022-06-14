@@ -24,7 +24,7 @@ int main(){
         //      << endl;
         for(auto x : dict){
             int curr = x.first;
-            int l = x.second[0], r = x.second[0];
+            int l = x.second[0], r = x.second[0], strt = x.second[0];
             int max_so_far = 1;
             int curr_max = 1;
             for(int i = 1; i < x.second.size(); i++){
@@ -33,13 +33,15 @@ int main(){
                 }
                 else{
                     curr_max = 1;
-                    l = x.second[i];
+                    strt = x.second[i];
                 }
                 if(curr_max > max_so_far){
                     max_so_far = curr_max;
                     r = x.second[i];
+                    l = strt;
                 }
             }
+            //cout << curr << " " << max_so_far << " " << l << " " << r << "*\n";
             if(max_so_far > master_max_value){
                 master_max_value = max_so_far;
                 master_max = curr;
