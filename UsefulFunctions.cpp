@@ -2,7 +2,9 @@
 using namespace std;
 typedef long long ll;
 
+//Using stringstream
 vector<string> ParseString(string s, char del){
+
     vector<string> words;
     stringstream sstream(s);
     string token;
@@ -11,6 +13,7 @@ vector<string> ParseString(string s, char del){
     }
     return words;
 }
+//iterating over string
 vector<string> ParseString2(string s, char del){
     vector<string> words;
     string token = "";
@@ -31,6 +34,7 @@ vector<string> ParseString2(string s, char del){
     return words;
 }
 
+//subarray with max sum
 int MaxSumSubstring(int* Arr, int n){
     int curr_max = Arr[0];
     int max_so_far = Arr[0];
@@ -39,6 +43,55 @@ int MaxSumSubstring(int* Arr, int n){
         max_so_far = max(max_so_far, curr_max);
     }
     return max_so_far;
+}
+
+//Knap sack unlimited weights and order matters
+vector<vector<int>> combinationSum(vector<int>& candidates, int target){ 
+    int num = candidates.size();
+    vector<vector<int>> dp[target + 1];
+    
+    for(int i = 1; i <= target; i++){
+        for(auto c : candidates){
+            if(c == i){
+                dp[i].push_back({c});
+            }
+            else if(c < i){
+                vector<vector<int>> temp = dp[i - c];
+                for(int j = 0; j < temp.size(); j++){
+                    temp[j].push_back(c);
+                }
+                dp[i].insert(dp[i].end(), temp.begin(), temp.end());
+            }
+            
+        }
+    }
+    return dp[target];
+}
+
+//Knap sack unlimited weights and order doesn't matter
+vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
+    int num = candidates.size();
+    vector<vector<int>> dp[target + 1][num];
+    
+    for(int k = 0; k < num; k++){
+        for(int i = 1; i <= target; i++){
+            for(int l = 0; l <= k; l++){
+                int c = candidates[l];
+                if(c == i){
+                    dp[i][k].push_back({c});
+                }
+                else if(c < i){
+                    vector<vector<int>> temp = dp[i - c][l];
+                    for(int j = 0; j < temp.size(); j++){
+                        temp[j].push_back(c);
+                    }
+                    dp[i][k].insert(dp[i][k].end(), temp.begin(), temp.end());
+                }
+
+            }
+        }
+    }
+    return dp[target][num - 1];
 }
 
 int main(){
@@ -50,3 +103,4 @@ int main(){
     //cout << "\n";
     return 0;
 }
+
