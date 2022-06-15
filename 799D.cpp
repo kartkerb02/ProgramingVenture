@@ -1,6 +1,13 @@
+//important GCD concept
 #include<bits/stdc++.h>
 using namespace std;
 typedef long long ll;
+
+bool check(int t, int initial, int incr){
+    int target = t*60 + t/10  + 10*(t%10);
+    int X = gcd(60*24, incr);
+    return (target - initial)%X == 0;
+}
 
 int main(){
     ios_base::sync_with_stdio(false);
@@ -15,17 +22,13 @@ int main(){
 
         int h = stoi(init.substr(0,2));
         int m = stoi(init.substr(3,2));
-        int curr = 60*h + m;
-        int initial = curr;
+        int initial = 60*h + m;
         
         int out = 0;
-        while(true){
-            if(palin(curr)){
+        int Palins[] = {23 , 22, 21, 20, 15, 14, 13, 12, 11, 10, 05, 04, 03, 02, 01, 00};
+        for(int i = 0; i < 16; i++){
+            if(check(Palins[i], initial, incr)){
                 out++;
-            }
-            curr+=incr;
-            if(curr == initial){
-                break;
             }
         }
         cout << out << "\n";
