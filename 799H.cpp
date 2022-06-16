@@ -6,19 +6,19 @@ int main(){
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
 
-    int t;
+    ll t;
     cin >> t;   
     while(t){
-        int n;
+        ll n;
         cin >> n;
-        int A[n+1] = {};
-        for(int i = 1; i <= n; i++){cin >> A[i];}
-        unordered_map<int, vector<int>> dict;
+        ll A[n+1] = {};
+        for(ll i = 1; i <= n; i++){cin >> A[i];}
+        unordered_map<ll, vector<ll>> dict;
 
-        for(int i = 1; i <= n; i++){
+        for(ll i = 1; i <= n; i++){
             dict[A[i]].push_back(i);
         }
-        int master_max_value = 0, master_max = 0, l_master = -1, r_master = -1;
+        ll master_max_value = 0, master_max = 0, l_master = -1, r_master = -1;
         // for (auto i : dict){
         //     cout << i.first << "   " << i.second.size() << endl;
         //     for(auto x : i.second){
@@ -28,11 +28,11 @@ int main(){
         // }
         
         for(auto x : dict){
-            int curr = x.first;
-            int l = x.second[0], r = x.second[0], strt = x.second[0];
-            int max_so_far = 1;
-            int curr_max = 1;
-            for(int i = 1; i < x.second.size(); i++){
+            ll curr = x.first;
+            ll l = x.second[0], r = x.second[0], strt = x.second[0];
+            ll max_so_far = 1;
+            ll curr_max = 1;
+            for(ll i = 1; i < x.second.size(); i++){
                 if(curr_max + 1 - (x.second[i] - x.second[i-1] -1) > 1){
                     curr_max = curr_max + 1 - (x.second[i] - x.second[i-1] -1);
                 }
