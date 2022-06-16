@@ -28,14 +28,19 @@ int main(){
             }
         }
 
-        cout << tl << " " << br << " " << tr << " " << bl << "*\n";
-        int d1 = (tl + br) / 2;
-        int d2 = (tr + bl) / 2;
-
-        int x = (d1 - d2) / 2;
-        int y = (d1 - x);
-
-        cout << x << " " << y << "\n";
+        pair<int, int> ans;
+        int mi = INT_MAX;
+        for(int i = 1; i <= n; i++) {
+            for(int j = 1; j <= m; j++) {
+                int di = max(max(abs(i + j - tl), abs(i + j - br)), max(abs(j - i - bl), abs(j - i - tr)));
+                if(di < mi) {
+                    mi = di;
+                    ans = pair(i, j);
+                }
+            }
+            //cout << "\n";
+        }
+        cout << ans.first << ' ' << ans.second << '\n';
         t--;
     }
     return 0;
