@@ -94,6 +94,20 @@ vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
     return dp[target][num - 1];
 }
 
+//binary search and insert
+int searchInsert(vector<int>& nums, int target){
+    int l = 0;
+    int r = n - 1;
+    int m;
+    while(l <= r){
+        m = l + (r-l)/2;
+        if(nums[m] == target){return m;}
+        else if(nums[m] < target){l = m + 1;}
+        else{r = m - 1;}
+    }
+    return l;
+}
+
 int main(){
     vector<string> vec = ParseString2("*****", '*');
     cout << vec.size() << "\n";
