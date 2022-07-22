@@ -1,7 +1,18 @@
 #include<bits/stdc++.h>
 using namespace std;
 typedef long long ll;
-
+int solve(int N, int y, vector<int> A) {
+        unordered_map<int, int> freq;
+        for(int x : A){
+            freq[x]++;
+        }
+        unordered_map<int, int>::iterator it;
+        int mx = 0;
+        for(it = freq.begin(); it != freq.end(); it++){
+            mx = max(mx, (*it).second);
+        }
+        return mx;
+    }
 string add(string s1, string s2){
     int n1 = s1.size();
     int n2 = s2.size();
@@ -61,15 +72,38 @@ string multiply(string num1, string num2) {
     }
     return out;
 }
+int count(int N,vector<vector<int>> A,vector<vector<int>> B) {
+        cout << "hello";
+        int suma = 0, sumb = 0, diff = 0;
+        for(int i = 1; i <= N; i++){
+            for(int j = 1; j <= N; j++){
+                // if(A[i][j]){
+                //     suma++;
+                //     if(B[i][j] != 1){
+                //         diff++;
+                //     }
+                // }
+                if(B[i][j]){
+                    sumb++;
+                }
+                cout << B[i][j]<< "\n";
+            }
+        }
+        cout << suma << " " << sumb;
+        if(suma == sumb){return diff;}
+        return -1;
+    }  
+    int gcd(int a, int b)
+    {
+        return b == 0 ? a : gcd(b, a % b);   
+    }
+ 
 
 int main(){
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
-
-    
-    //cout << add("12","93");
-    cout << multiply("123", "49");
-        
-    
+    int ans = 0;
+    for(int i = 2; i <= 20; i++){
+        ans += i*(i-2)/2;
+    }
+    cout << ans;
     return 0;
 }
