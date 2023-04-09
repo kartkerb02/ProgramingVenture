@@ -108,6 +108,14 @@ int searchInsert(vector<int>& nums, int target){
     return l;
 }
 
+int C(int n, int r){
+    int N = 1e9 + 7;
+    long long ret = 1;
+    for(int i = 1; i <= r; i++){
+        ret = ((ret*(n-i+1))/i)%N;
+    }
+    return (int) ret;
+}
 int main(){
     vector<string> vec = ParseString2("*****", '*');
     cout << vec.size() << "\n";
